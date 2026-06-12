@@ -1,0 +1,24 @@
+{
+  "name": "fightcam",
+  "private": true,
+  "version": "1.0.0",
+  "description": "FightCam - real-time multiplayer motion-controlled fighting game",
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "postinstall": "npm run build -w @fightcam/shared",
+    "build": "npm run build:backend && npm run build -w @fightcam/frontend",
+    "build:shared": "npm run build -w @fightcam/shared",
+    "build:backend": "npm run build -w @fightcam/shared && npm run build -w @fightcam/backend",
+    "build:frontend": "npm run build -w @fightcam/shared && npm run build -w @fightcam/frontend",
+    "dev:backend": "npm run dev -w @fightcam/backend",
+    "dev:frontend": "npm run dev -w @fightcam/frontend",
+    "start:backend": "npm run start -w @fightcam/backend"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

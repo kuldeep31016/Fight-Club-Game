@@ -1,0 +1,16 @@
+# Render Blueprint — deploys the FightCam backend as a Node web service.
+# Connect the repo on https://render.com, pick "Blueprint", done.
+services:
+  - type: web
+    name: fightcam-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:backend
+    startCommand: npm start --workspace backend
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: CLIENT_ORIGIN
+        # Comma-separated list of allowed origins. Add your Vercel URL here.
+        value: "*"
